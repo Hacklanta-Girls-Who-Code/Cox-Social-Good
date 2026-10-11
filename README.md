@@ -9,7 +9,7 @@ LifeLocker is built by Girls Who Code, which is comprised of Alaina Bastien, Ben
 # Project Overview
 Girls Who Code is a team of three that developed a web-based application called LifeLocker in alignment with the Social Good track at the Hacklanta 26 hackathon.
 
-We developed a React.js w/ Vite project that can take PDF forms of documents or photos of important documents that a user uploaded, store these photos in a Supabase database, allow the user to access them online, and have the Gemini model we implemented using the Gemini API pull text from the files and print it onto a formatted JSON file.
+We developed a React.js w/ Vite project that can take document PDFs or photos of important documents that a user uploaded, store these photos in a Supabase database, allow the user to access them online, and have the Gemini model we implemented using the Gemini API pull text from the files and print it onto a formatted JSON file.
 
 This project was made, primarily, with victims of homelessness in mind. In the US, about "40% of people" who are "experiencing homelessness live in unsheltered locations" (cdc.gov). Given this, it is very likely that an unhoused person will have nowhere safe to store important documents like an ID, their passport, or other necessities. This could possibly result in stolen or otherwise lost documents, leaving an unhoused person stranded with no way to prove their identity. 
 
