@@ -50,6 +50,7 @@ function Dashboard({ supabase }) {
             const newDoc = {
                 id: Date.now(),
                 name: data.docTitle || documentType || selectedFile.name,
+                documentType: data.documentType || documentType || "Unknown document type",
                 image: selectedFile.type.startsWith("image/")
                     ? URL.createObjectURL(selectedFile)
                     : null,
@@ -183,7 +184,33 @@ function Dashboard({ supabase }) {
                                 }}
                                 >
                                     <h3>{doc.name}</h3>
+                                    {doc.image && (
+                                        <img
+                                            src={doc.image}
+                                            alt={`Preview of ${doc.name}`}
+                                            style={{
+                                                width: "100%",
+                                                maxHeight: "180px",
+                                                objectFit: "contain",
+                                                borderRadius: "8px",
+                                                marginTop: "8px",
+                                            }}
+                                        />
+                                    )}
 
+                                    <div style={{ marginTop: "12px" }}>
+                                        {doc.fullName && (
+                                            <p><strong>Full name:</strong> {doc.fullName}</p>
+                                        )}
+
+                                        {doc.dateOfBirth && (
+                                            <p><strong>Date of birth:</strong> {doc.dateOfBirth}</p>
+                                        )}
+
+                                        {doc.documentType && (
+                                            <p><strong>Document type:</strong> {doc.documentType}</p>
+                                        )}
+                                    </div>
                                     <button>
                                         Share
                                     </button>
