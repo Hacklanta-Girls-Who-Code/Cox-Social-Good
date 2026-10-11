@@ -10,7 +10,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 
 // Creates configured Supabase client
-export const createSupabaseClient = (getIdTokens) =>
+export const createSupabaseClient = (getIdTokenClaims) =>
     createClient(supabaseUrl, supabasePublishableKey,
     {
         // specifies to Supabase to use this token for requests

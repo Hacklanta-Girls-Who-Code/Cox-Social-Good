@@ -27,6 +27,21 @@ function App() {
   const logout = () =>
     auth0Logout({ logoutParams: { returnTo: window.location.origin } });
 
+const testSupabaseConnection = async () => {
+  const { data, error } = await supabase
+    .from("documents")
+    .select("id")
+    .limit(1);
+
+  if (error) {
+    console.error("Supabase test failed:", error);
+    return;
+  }
+
+  console.log("Supabase test succeeded:", data);
+};
+
+
   if (isLoading) return "Loading...";
 
   return isAuthenticated ? (
@@ -38,6 +53,10 @@ function App() {
       <pre>{JSON.stringify(user, null, 2)}</pre>
 
       <button onClick={logout}>Logout</button>
+
+      <button onClick={testSupabaseConnection}>
+        Test Supabase Connection
+      </button>
     </>
   ) : (
     <>
