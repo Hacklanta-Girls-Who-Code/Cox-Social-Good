@@ -28,10 +28,12 @@ const fileToGenerativePart = async (file) => {
 // compile it in a .json format, and return it to the user.
 export const analyzeDocumentImage = async (file) => {
   try {
-    // Initialize the Gemini client using our personalized API key.
-    const geminiClient = new GoogleGenAI({
-      apiKey: import.meta.env.VITE_GEMINI_API_KEY
-    });
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('VITE_GEMINI_API_KEY is not configured.');
+    }
+
+    const geminiClient = new GoogleGenAI({ apiKey });
 
     // Define our JSON Schema structure for the specific output we want from Gemini.
     const jsonSchema = {
@@ -57,26 +59,21 @@ export const analyzeDocumentImage = async (file) => {
       required: ["docTitle", "fullName", "dateOfBirth", "documentType"],
     };
 
-    // Initialize Gemini-1.5-flash for its ability to handle multimodal extraction tasks.
-    const model = geminiClient.models.generateContent({
-      model: 'gemini-1.5-flash',
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: jsonSchema,
-      },
-    });
     const imageInput = await fileToGenerativePart(file);
     const prompt = 'Analyze this document image. Carefully extract the following details: Document Title, individual\'s Full Name, their Date of Birth (in DD-MM-YYYY format), and the specific Document Type.';
     
     const result = await geminiClient.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.8-flash',
       contents: [prompt, imageInput],
       config: {
         responseMimeType: "application/json",
         responseSchema: jsonSchema,
-      }
+      },
     });
-    const responseText = result.text();
+    const responseText = result.text;
+    if (!responseText) {
+      throw new Error('Gemini returned an empty response.');
+    }
 
     return JSON.parse(responseText);
     
@@ -108,7 +105,8 @@ function App() {
       const result = await analyzeDocumentImage(file);
       setExtractedData(result); // Store Gemini's JSON output in the state.
     } catch (error) {
-      setError("!! - Failed to extract document details. Please ensure the document is displayed clearly in the image and try again.");
+      //setError("!! - Failed to extract document details. Please ensure the document is displayed clearly in the image and try again.");
+      setError(error instanceof Error ? error.message : String(error));
       console.error(error);
     } finally {
       setLoading(false); // Regardless of success or failure, stop the loading state.
