@@ -3,12 +3,12 @@ Lifelocker is built by Alaina Bastien, Benevolence Ed-Malik, and J'adore Jn-Char
 MLH: Best Use of Auth0
 MLH: Best Use of Gemini API
 
-Project Overview
+# Project Overview
 ...
 
-Mission Statement
+## Mission Statement
 ---
-How to set this project up
+# How to set this project up
 ---
-References/Resources Used
+# References/Resources Used
 1.
