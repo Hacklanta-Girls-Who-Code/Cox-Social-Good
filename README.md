@@ -33,10 +33,11 @@ Ensure you have the following installed on your device:
 - npm, pnpm, or yarn package manager. _(We used npm during development)_
 ## Installation and Necessary Configurations
 1. Once you have cloned this repository, install the required packages and tools with your preferred package manager, i.e.:
-  - npm install
-  - pnpm install
-  - yarn install
+    - npm install
+    - pnpm install
+    - yarn install
 2. Create a new file called .env in the project's root directory. Then, copy paste the following:
+
 !! TENTATIVE SECTION !!---------------------------------------------------
 ### Google Gemini API
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
@@ -50,9 +51,9 @@ VITE_SUPABASE_URL=your_supabase_project_url_here
 VITE_SUPABASE_ANON_KEY=your_supabase_anonymous_key_here
 !! TENTATIVE SECTION !! ------------------------------------------------
 3. Start up the local development server:
-  - npm run dev
+    - npm run dev
 4. Open your browser and navigate to the port shown in your terminal, which should look something like this:
-  - http://localhost:<your-port>
+    - http://localhost:<your-port>
 You should now be able to register and/or log in via Auth0, upload images of your documents for Gemini 3.8 Flash to extract, and witness the data flow to Superbase.
 
 ---
