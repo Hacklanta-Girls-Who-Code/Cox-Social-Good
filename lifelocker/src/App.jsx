@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMemo } from "react";
 import { createSupabaseClient } from "./lib/supabaseClient";
+import Dashboard from "./Dashboard";
 
 function App() {
   const {
