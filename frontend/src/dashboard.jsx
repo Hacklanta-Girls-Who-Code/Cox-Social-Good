@@ -136,7 +136,7 @@ function Dashboard() {
         >
             {documents.map((doc) => (
                 <div key={doc.id} style={{
-                    backgroundColor: "#2196f3",
+                    backgroundColor: "#e5e7eb0e",
                     color: "white",
                     width: "220px",
                     borderRadius: "10px",
