@@ -146,7 +146,7 @@ function App() {
               <div className="result-card" style={{marginTop: '20px', textAlign: 'left', background: '#f2f2eb', padding: '15px', borderRadius: '8px'}}>
                 <h3 style ={{color: '', marginTop: 0}}> File Processing Successful.</h3>
                 <p><strong>Document Title:</strong> {extractedData.docTitle}</p>
-                <p><strong>Full Name:</strong> {extractedData.fulLName}</p>
+                <p><strong>Full Name:</strong> {extractedData.fullName}</p>
                 <p><strong>Date of Birth:</strong> {extractedData.dateOfBirth}</p>
                 <p><strong>Document Type:</strong> {extractedData.documentType}</p>
               </div>
