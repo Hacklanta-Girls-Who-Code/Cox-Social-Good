@@ -59,11 +59,13 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anonymous_key_here
 
 !! TENTATIVE SECTION !! ------------------------------------------------
 
-3. Start up the local development server:
+3. Be sure to have navigated into the right folder (lifelocker) using:
+    - cd lifelocker
+4. Start up the local development server:
     - npm run dev
-4. Open your browser and navigate to the port shown in your terminal, which should look something like this:
+5. Open your browser and navigate to the port shown in your terminal, which should look something like this:
     - http://localhost:<your-port>
-You should now be able to register and/or log in via Auth0, upload images of your documents for Gemini 3.8 Flash to extract, and witness the data flow to Superbase.
+You should now be able to register and/or log in via Auth0, upload images of your documents for Gemini 3.8 Flash to extract, and witness the data flow to Superbase. Please note, when logging in, you will receive an email sent from Auth0 to give you a code. This email may end up in your spam folder, so please check there incase. 
 
 ---
 # References/Resources Used
