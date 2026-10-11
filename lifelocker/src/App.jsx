@@ -28,71 +28,17 @@ function App() {
   const logout = () =>
     auth0Logout({ logoutParams: { returnTo: window.location.origin } });
 
-  const testSupabaseConnection = async () => {
-    const { data, error } = await supabase
-      .from("documents")
-      .select("id")
-      .limit(1);
-
-  if (error) {
-    console.error("Supabase test failed:", error);
-    return;
-  }
-
-  console.log("Supabase test succeeded:", data);
-};
-
-const inspectAuth0Claims = async () => {
-  const claims = await getIdTokenClaims();
-
-  console.log("Auth0 token claims:", {
-    sub: claims?.sub,
-    role: claims?.role,
-    issuer: claims?.iss,
-    audience: claims?.aud,
-  });
-};
-
-
-const testSupabaseIdentity = async () => {
-  const { data, error } = await supabase.rpc("test_auth_identity");
-
-  if (error) {
-    console.error("Supabase identity test failed:", error);
-    return;
-  }
-
-  console.log("Supabase identity result:", data);
-};
-
-
   if (isLoading) return "Loading...";
 
-  return isAuthenticated ? (
+  return isAuthenticated ? ( // when the user is authenticated. Display's dashboard.
     <>
       <p>Logged in as {user.email}</p>
 
-      <h1>User Profile</h1>
-
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-
-      <p>Auth0 user ID: {user.sub}</p>
+      <Dashboard supabase={supabase}/>
 
       <button onClick={logout}>Logout</button>
-
-      <button onClick={testSupabaseConnection}>
-        Test Supabase Connection
-      </button>
-
-      <button onClick={inspectAuth0Claims}>
-        Inspect Auth0 Claims
-      </button>
-
-      <button onClick={testSupabaseIdentity}>
-        Test Supabase Identity
-      </button>
     </>
-  ) : (
+  ) : ( // when the user is not
     <>
       {error && <p>Error: {error.message}</p>}
 
