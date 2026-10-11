@@ -11,6 +11,7 @@ function Dashboard({ supabase }) {
     const [analysis, setAnalysis] = useState(null);
 
     const upload = async () => {
+        console.log("Upload function triggered");
         if (!selectedFile || isAnalyzing) return;
 
         setIsAnalyzing(true);

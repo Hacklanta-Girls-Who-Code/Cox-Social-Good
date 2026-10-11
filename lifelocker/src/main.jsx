@@ -10,6 +10,7 @@ createRoot(document.getElementById("root")).render(
       clientId="KDUKbLzAYscKejMsPI8Bn82fw4LgKelR"
       authorizationParams={{
         redirect_uri: window.location.origin,
+        audience: "https://lifelocker-api",
       }}
     >
       <App />

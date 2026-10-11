@@ -11,13 +11,13 @@ function App() {
     loginWithRedirect: login, // Starts the login flow
     logout: auth0Logout, // Starts the logout flow
     user, // User profile
-    getIdTokenClaims, // Returns claims from id_token
+    getAccessTokenSilently,
   } = useAuth0();
 
   // useMemo creates the function to create the Supabase client. 
   // When Supabase callsback, this will return the ID token
   const supabase = useMemo(
-    () => createSupabaseClient(getIdTokenClaims), [getIdTokenClaims]);
+    () => createSupabaseClient(getAccessTokenSilently), [getAccessTokenSilently]);
 
   const signup = () =>
     login({ authorizationParams: { connection: "email", screen_hint: "signup", } });

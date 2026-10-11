@@ -10,19 +10,13 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 
 // Creates configured Supabase client
-export const createSupabaseClient = (getIdTokenClaims) =>
-    createClient(supabaseUrl, supabasePublishableKey,
-    {
-        // specifies to Supabase to use this token for requests
-        accessToken: async() => {
-            const claims = await getIdTokenClaims();
-            const idToken = claims?.__raw; // retrives ID token. '.?' returns undefined instead of throwing an error
-
-            // Reports error if user is missing authenticated claim
-            if (!idToken) {
-                throw new Error("Missing Auth0 ID token")
-            }
-            return idToken;
-        }
-    }
-)
+export const createSupabaseClient = (getAccessTokenSilently) =>
+  createClient(supabaseUrl, supabasePublishableKey, {
+    accessToken: async () => {
+      return await getAccessTokenSilently({
+        authorizationParams: {
+          audience: "https://lifelocker-api",
+        },
+      })
+    },
+  })
