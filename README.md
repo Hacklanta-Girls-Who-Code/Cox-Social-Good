@@ -14,6 +14,7 @@ We developed a React.js w/ Vite project that can take document PDFs or photos of
 This project was made, primarily, with victims of homelessness in mind. In the US, about "40% of people" who are "experiencing homelessness live in unsheltered locations" (cdc.gov). Given this, it is very likely that an unhoused person will have nowhere safe to store important documents like an ID, their passport, or other necessities. This could possibly result in stolen or otherwise lost documents, leaving an unhoused person stranded with no way to prove their identity. 
 
 We find LifeLocker to be solution to this problem. With our service, users can access digital copies of their most important documents at any time, ensuring that they stay visible to all of the right organizations. 
+
 **Problem:**
 People experiencing homelessness often lose access to physical documents required for housing, employment, healthcare, and social services.
 
